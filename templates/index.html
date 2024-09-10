@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registered Users</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link id="themeStylesheet" rel="stylesheet" href="/static/light-theme.css">
+    <style>
+        body {
+            animation: fadeIn 1s;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Registered Users</h1>
+            <button id="themeToggle" class="btn btn-secondary">Toggle Theme</button>
+        </div>
+        <ul class="list-group">
+            {% for user in users %}
+                <li class="list-group-item">{{ user[1] }} - {{ user[2] }}</li>
+            {% endfor %}
+        </ul>
+        <div class="text-center mt-4">
+            <a href="{{ url_for('register') }}" class="btn btn-primary">Register a new user</a>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            let stylesheet = document.getElementById('themeStylesheet');
+            let newTheme = stylesheet.getAttribute('href') === '/static/light-theme.css' ? '/static/dark-theme.css' : '/static/light-theme.css';
+            stylesheet.setAttribute('href', newTheme);
+        });
+    </script>
+</body>
+</html>

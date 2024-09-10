@@ -1,0 +1,9 @@
+body {
+    background-color: #343a40;
+    color: #ffffff;
+}
+.navbar, .list-group-item, .btn, .form-control {
+    background-color: #495057;
+    color: #ffffff;
+    border-color: #6c757d;
+}
